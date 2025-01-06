@@ -16,6 +16,7 @@ export class WebSocketClient extends EventEmitter {
     constructor(testnet: boolean = false) {
         super();
         this.url = testnet ? CONSTANTS.WSS_URLS.TESTNET : CONSTANTS.WSS_URLS.PRODUCTION;
+        (this as EventEmitter).setMaxListeners(10000); // Set max listeners to 10,000
     }
 
     connect(): Promise<void> {
